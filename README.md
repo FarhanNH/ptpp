@@ -1,4 +1,4 @@
-# pptp-fe
+# pptp
 
 ## Project setup
 
