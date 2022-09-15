@@ -1,0 +1,36 @@
+$primary-font: 'Mark OT', arial, sans-serif;
+
+html {
+  scroll-behavior: smooth;
+}
+
+$primary-font: 'Mark OT', arial, sans-serif;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.v-application,
+.v-application .sidebar-menu .body-2,
+.v-application .sidebar-submenu .body-2,
+.v-application .home-page .body-2,
+.v-application .page .body-2,
+.v-application .page .caption,
+.v-application * {
+  font-family: $primary-font !important;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(10vw);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(-10vw);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease-out;
+}
