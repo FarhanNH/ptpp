@@ -1,4 +1,4 @@
-# pptp
+# ptpp
 
 ## Project setup
 

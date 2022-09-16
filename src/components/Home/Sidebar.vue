@@ -42,7 +42,7 @@ export default {
       dialog: false,
       items: [
         { title: 'Home', icon: 'mdi-view-dashboard', menu: 'Dashboard' },
-        { title: 'PPTP', icon: 'mdi-feather', menu: 'PPTP' },
+        { title: 'PTPP', icon: 'mdi-feather', menu: 'PTPP' },
         { title: 'Profile', icon: 'mdi-account-box', menu: 'Profile' },
         { title: 'Role', icon: 'mdi-gavel', menu: 'Role' },
         { title: 'User', icon: 'mdi-account-box-multiple', menu: 'User' },

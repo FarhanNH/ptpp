@@ -23,22 +23,11 @@
       </v-row> -->
       <v-row class="pb-4">
         <v-col cols="11">
-          <v-data-table
-            hide-default-header
-            hide-default-footer
-            :headers="headers"
-            :items="dataTable"
-            :search="searchData"
-          >
+          <v-data-table hide-default-header hide-default-footer :headers="headers" :items="dataTable" :search="searchData">
             <template #header="{ props: { headers } }">
               <thead class="v-data-table-header">
                 <tr>
-                  <th
-                    v-for="header in headers"
-                    :key="header.value"
-                    :width="header.width"
-                    class="light-blue--text text--darken-3"
-                  >
+                  <th v-for="header in headers" :key="header.value" :width="header.width" class="light-blue--text text--darken-3">
                     {{ header.text }}
                   </th>
                 </tr>
@@ -48,25 +37,17 @@
               <v-icon small @click="editItem(item)">mdi-file-document</v-icon>
             </template>
           </v-data-table>
-          <ModalConfirm
-            :modalOn="dialogDelete"
-            @closeDelete="closeDelete"
-            @deleteItemConfirm="deleteItemConfirm"
-          ></ModalConfirm>
-          <ModalNotif
-            :modalOn="modals.success"
-            :decision="modals.decision"
-            @close="modals.success = false"
-          ></ModalNotif>
+          <ModalConfirm :modalOn="dialogDelete" @closeDelete="closeDelete" @deleteItemConfirm="deleteItemConfirm"></ModalConfirm>
+          <ModalNotif :modalOn="modals.success" :decision="modals.decision" @close="modals.success = false"></ModalNotif>
         </v-col>
       </v-row>
     </v-card>
   </v-container>
 </template>
 <script>
-import ModalNotif from "@/components/Modals/ModalNotif.vue";
-import ModalConfirm from "@/components/Modals/ModalConfirm.vue";
-import Router from "@/tools/Router";
+import ModalNotif from '@/components/Modals/ModalNotif.vue';
+import ModalConfirm from '@/components/Modals/ModalConfirm.vue';
+import Router from '@/tools/Router';
 export default {
   components: {
     ModalNotif,
@@ -74,30 +55,30 @@ export default {
   },
   data() {
     return {
-      title: "Role",
+      title: 'Role',
       modals: {
         success: false,
-        decision: "",
+        decision: '',
       },
       dialogDelete: false,
-      searchKey: "",
-      searchData: "",
+      searchKey: '',
+      searchData: '',
       dataTable: [],
       headers: [
         {
-          text: "Role",
-          value: "roleName",
-          width: "10%",
+          text: 'Role',
+          value: 'roleName',
+          width: '10%',
         },
         {
-          text: "Deskripsi",
-          value: "description",
-          width: "20%",
+          text: 'Deskripsi',
+          value: 'description',
+          width: '20%',
         },
         {
-          text: "Edit",
-          value: "edit",
-          width: "1%",
+          text: 'Edit',
+          value: 'edit',
+          width: '1%',
         },
       ],
     };
@@ -110,7 +91,7 @@ export default {
       console.log(val);
       val.urlBack = this.$route.path;
       let strVal = JSON.stringify(val);
-      Router.redirectParam("Edit Role", strVal);
+      Router.redirectParam('Edit Role', strVal);
     },
     deleteItem(val) {
       console.log(val);
@@ -122,39 +103,39 @@ export default {
     deleteItemConfirm() {
       this.dialogDelete = false;
       this.modals.success = true;
-      this.modals.decision = "Hapus Role";
+      this.modals.decision = 'Hapus Role';
     },
     dummy() {
       this.dataTable.push(
         {
           id: 1,
-          roleCode: "superuser",
-          roleName: "SUPER USER",
-          description: "Akses Semua Halaman",
+          roleCode: 'superuser',
+          roleName: 'SUPER USER',
+          description: 'Akses Semua Halaman',
           menus: [
             {
               id: 1,
-              menu: "Profile",
+              menu: 'Profile',
               access: true,
             },
             {
               id: 2,
-              menu: "User",
+              menu: 'User',
               access: true,
             },
             {
               id: 3,
-              menu: "Role",
+              menu: 'Role',
               access: true,
             },
             {
               id: 4,
-              menu: "PPTP",
+              menu: 'PTPP',
               access: true,
             },
             {
               id: 5,
-              menu: "Otor",
+              menu: 'Otor',
               access: true,
             },
           ],
@@ -163,33 +144,33 @@ export default {
         },
         {
           id: 2,
-          roleCode: "auditor",
-          roleName: "Auditor",
-          description: "Akses Untuk Otorisasi",
+          roleCode: 'auditor',
+          roleName: 'Auditor',
+          description: 'Akses Untuk Otorisasi',
           menus: [
             {
               id: 1,
-              menu: "Profile",
+              menu: 'Profile',
               access: true,
             },
             {
               id: 2,
-              menu: "User",
+              menu: 'User',
               access: false,
             },
             {
               id: 3,
-              menu: "Role",
+              menu: 'Role',
               access: false,
             },
             {
               id: 4,
-              menu: "PPTP",
+              menu: 'PTPP',
               access: false,
             },
             {
               id: 5,
-              menu: "Otor",
+              menu: 'Otor',
               access: true,
             },
           ],
@@ -198,33 +179,33 @@ export default {
         },
         {
           id: 3,
-          roleCode: "admin",
-          roleName: "Admin",
-          description: "Akses Untuk Input Data",
+          roleCode: 'admin',
+          roleName: 'Admin',
+          description: 'Akses Untuk Input Data',
           menus: [
             {
               id: 1,
-              menu: "Profile",
+              menu: 'Profile',
               access: true,
             },
             {
               id: 2,
-              menu: "User",
+              menu: 'User',
               access: false,
             },
             {
               id: 3,
-              menu: "Role",
+              menu: 'Role',
               access: false,
             },
             {
               id: 4,
-              menu: "PPTP",
+              menu: 'PTPP',
               access: true,
             },
             {
               id: 5,
-              menu: "Otor",
+              menu: 'Otor',
               access: false,
             },
           ],

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default {
   SaveSessionCustom(key, value) {
     // let ToJson = JSON.stringify(value);
@@ -30,5 +32,14 @@ export default {
       localStorage.removeItem(key);
       return true;
     }
+  },
+  GetMonthFromNow(months) {
+    return moment().clone().add(months, 'months').toDate();
+  },
+  FormatDate(date, format) {
+    return moment(date).lang('id').format(format);
+  },
+  GetCurrentYear() {
+    return moment().locale('id').startOf('year').format('YYYY');
   },
 };

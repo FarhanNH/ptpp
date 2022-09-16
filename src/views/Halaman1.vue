@@ -19,15 +19,7 @@
                 <v-subheader>Name</v-subheader>
               </v-col>
               <v-col cols="8">
-                <v-text-field
-                  v-model="name"
-                  :error-messages="nameErrors"
-                  :counter="10"
-                  solo
-                  required
-                  @input="$v.name.$touch()"
-                  @blur="$v.name.$touch()"
-                ></v-text-field>
+                <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" required @input="$v.name.$touch()" @blur="$v.name.$touch()"></v-text-field>
               </v-col>
             </v-row>
             <v-row>
@@ -35,14 +27,7 @@
                 <v-subheader>Email</v-subheader>
               </v-col>
               <v-col cols="8">
-                <v-text-field
-                  v-model="email"
-                  :error-messages="emailErrors"
-                  solo
-                  required
-                  @input="$v.email.$touch()"
-                  @blur="$v.email.$touch()"
-                ></v-text-field>
+                <v-text-field v-model="email" :error-messages="emailErrors" required @input="$v.email.$touch()" @blur="$v.email.$touch()"></v-text-field>
               </v-col>
             </v-row>
             <v-row>
@@ -50,29 +35,12 @@
                 <v-subheader>Item</v-subheader>
               </v-col>
               <v-col cols="8">
-                <v-select
-                  v-model="select"
-                  :items="items"
-                  :error-messages="selectErrors"
-                  label="Please select"
-                  solo
-                  required
-                  @change="$v.select.$touch()"
-                  @blur="$v.select.$touch()"
-                ></v-select>
+                <v-select v-model="select" :items="items" :error-messages="selectErrors" label="Please select" required @change="$v.select.$touch()" @blur="$v.select.$touch()"></v-select>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="9" class="ml-3">
-                <v-checkbox
-                  v-model="checkbox"
-                  :error-messages="checkboxErrors"
-                  label="Do you agree?"
-                  solo
-                  required
-                  @change="$v.checkbox.$touch()"
-                  @blur="$v.checkbox.$touch()"
-                ></v-checkbox>
+                <v-checkbox v-model="checkbox" :error-messages="checkboxErrors" label="Do you agree?" required @change="$v.checkbox.$touch()" @blur="$v.checkbox.$touch()"></v-checkbox>
               </v-col>
             </v-row>
             <v-row>
@@ -80,15 +48,7 @@
                 <v-subheader>Description</v-subheader>
               </v-col>
               <v-col cols="8">
-                <v-textarea
-                  v-model="desc"
-                  :error-messages="descErrors"
-                  :counter="50"
-                  solo
-                  required
-                  @change="$v.desc.$touch()"
-                  @blur="$v.desc.$touch()"
-                ></v-textarea>
+                <v-textarea v-model="desc" :error-messages="descErrors" :counter="50" required @change="$v.desc.$touch()" @blur="$v.desc.$touch()"></v-textarea>
               </v-col>
             </v-row>
             <v-row class="mb-2">
@@ -107,8 +67,8 @@
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
-import { required, maxLength, email } from "vuelidate/lib/validators";
+import { validationMixin } from 'vuelidate';
+import { required, maxLength, email } from 'vuelidate/lib/validators';
 export default {
   mixins: [validationMixin],
   validations: {
@@ -124,50 +84,48 @@ export default {
   },
   data() {
     return {
-      title: "Halaman 1",
-      subtitle: "Ini Halaman 1",
-      name: "",
-      email: "",
+      title: 'Halaman 1',
+      subtitle: 'Ini Halaman 1',
+      name: '',
+      email: '',
       select: null,
-      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
       checkbox: false,
-      desc: "",
+      desc: '',
     };
   },
   computed: {
     checkboxErrors() {
       const errors = [];
       if (!this.$v.checkbox.$dirty) return errors;
-      !this.$v.checkbox.checked && errors.push("You must agree to continue!");
+      !this.$v.checkbox.checked && errors.push('You must agree to continue!');
       return errors;
     },
     selectErrors() {
       const errors = [];
       if (!this.$v.select.$dirty) return errors;
-      !this.$v.select.required && errors.push("Item is required");
+      !this.$v.select.required && errors.push('Item is required');
       return errors;
     },
     nameErrors() {
       const errors = [];
       if (!this.$v.name.$dirty) return errors;
-      !this.$v.name.maxLength &&
-        errors.push("Name must be at most 10 characters long");
-      !this.$v.name.required && errors.push("Name is required.");
+      !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long');
+      !this.$v.name.required && errors.push('Name is required.');
       return errors;
     },
     emailErrors() {
       const errors = [];
       if (!this.$v.email.$dirty) return errors;
-      !this.$v.email.email && errors.push("Must be valid e-mail");
-      !this.$v.email.required && errors.push("E-mail is required");
+      !this.$v.email.email && errors.push('Must be valid e-mail');
+      !this.$v.email.required && errors.push('E-mail is required');
       return errors;
     },
     descErrors() {
       const errors = [];
       if (!this.$v.desc.$dirty) return errors;
-      !this.$v.desc.maxLength &&
-        errors.push("Description must be at most 50 characters long");
-      !this.$v.desc.required && errors.push("Description is required.");
+      !this.$v.desc.maxLength && errors.push('Description must be at most 50 characters long');
+      !this.$v.desc.required && errors.push('Description is required.');
       return errors;
     },
   },
@@ -177,11 +135,11 @@ export default {
     },
     clear() {
       this.$v.$reset();
-      this.name = "";
-      this.email = "";
+      this.name = '';
+      this.email = '';
       this.select = null;
       this.checkbox = false;
-      this.desc = "";
+      this.desc = '';
     },
   },
 };

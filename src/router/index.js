@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Functions from '../tools/Functions';
-import pptp from './pptp';
+import ptpp from './ptpp';
 import profile from './profile';
 import role from './role';
 import user from './user';
@@ -25,7 +25,7 @@ const routes = [
           requiresAuth: true,
         },
       },
-      ...pptp,
+      ...ptpp,
       ...profile,
       ...role,
       ...user,
