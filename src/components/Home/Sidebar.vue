@@ -13,7 +13,7 @@
         </v-list-item>
       </v-list>
 
-      <template v-slot:append>
+      <!-- <template v-slot:append>
         <div class="pa-2">
           <v-dialog v-model="dialog" persistent max-width="290">
             <template v-slot:activator="{ on, attrs }">
@@ -29,7 +29,7 @@
             </v-card>
           </v-dialog>
         </div>
-      </template>
+      </template> -->
     </v-navigation-drawer>
   </v-card>
 </template>

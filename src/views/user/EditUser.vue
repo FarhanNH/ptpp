@@ -27,7 +27,6 @@
             outlined
             @input="$v.name.$touch()"
             @blur="$v.name.$touch()"
-            disabled
           ></v-text-field>
         </v-col>
       </v-row>
@@ -42,7 +41,6 @@
             outlined
             @input="$v.username.$touch()"
             @blur="$v.username.$touch()"
-            disabled
           ></v-text-field>
         </v-col>
       </v-row>
@@ -57,7 +55,6 @@
             outlined
             @input="$v.email.$touch()"
             @blur="$v.email.$touch()"
-            disabled
           ></v-text-field>
         </v-col>
       </v-row>
@@ -70,6 +67,7 @@
             v-model="roleCode"
             :items="roleOption"
             :error-messages="roleErrors"
+            placeholder="Pilih Role"
             outlined
             required
             @change="$v.roleCode.$touch()"
@@ -130,7 +128,7 @@ export default {
   components: { ModalNotif },
   data() {
     return {
-      title: "Edit User",
+      title: "",
       modals: {
         success: false,
         decision: "",
@@ -188,7 +186,7 @@ export default {
       if (!this.$v.$invalid) {
         this.modals.success = true;
         this.modals.urlBack = this.urlBack;
-        this.modals.decision = "Edit User";
+        this.modals.decision = this.title;
       }
     },
     initRoleOption() {
@@ -209,14 +207,19 @@ export default {
     },
   },
   beforeMount() {
+    this.initRoleOption();
     this.data = JSON.parse(this.$route.params.items);
-    console.log(this.data);
+    // console.log(this.data);
+    this.urlBack = this.data.urlBack;
+    if (this.data.isAddItem) {
+      this.title = "Tambah User";
+    } else {
+      this.title = "Edit User";
     this.name = this.data.name;
     this.username = this.data.username;
     this.email = this.data.email;
     this.roleCode = this.data.roleCode;
-    this.urlBack = this.data.urlBack;
-    this.initRoleOption();
+    }
   },
 };
 </script>
