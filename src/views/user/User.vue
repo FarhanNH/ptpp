@@ -207,7 +207,7 @@ export default {
             },
             {
               id: 5,
-              menu: 'Otor',
+              menu: 'Otorisasi',
               access: true,
             },
           ],
@@ -244,7 +244,7 @@ export default {
             },
             {
               id: 5,
-              menu: 'Otor',
+              menu: 'Otorisasi',
               access: true,
             },
           ],
@@ -281,7 +281,7 @@ export default {
             },
             {
               id: 5,
-              menu: 'Otor',
+              menu: 'Otorisasi',
               access: false,
             },
           ],
