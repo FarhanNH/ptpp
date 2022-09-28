@@ -8,8 +8,22 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title style="color: black" class="font-weight-bold">{{ item.title }}</v-list-item-title>
+            <v-list-item-title class="font-weight-bold black--text">{{ item.title }}</v-list-item-title>
           </v-list-item-content>
+          <!-- <v-expansion-panels accordion light tile flat style="width: 50%" class="font-weight-bold black--text" v-else>
+            <v-expansion-panel :readonly="disablePtpp">
+              <v-expansion-panel-header style="padding: 0" hide-actions>
+                {{ item.title }}
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-list-item style="padding: 0" v-for="item in childPTPP" :key="item.title" @click="pindah(item)" link>
+                  <v-list-item-content style="padding: 0">
+                    <v-list-item-title class="font-weight-bold black--text">{{ item.title }}</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels> -->
         </v-list-item>
       </v-list>
 
@@ -36,16 +50,23 @@
 
 <script>
 import Router from '../../tools/Router';
+// import Functions from '../../tools/Functions';
 export default {
   data() {
     return {
       dialog: false,
+      disablePtpp: true,
       items: [
         { title: 'Home', icon: 'mdi-view-dashboard', menu: 'Dashboard' },
         { title: 'PTPP', icon: 'mdi-feather', menu: 'PTPP' },
         { title: 'Profile', icon: 'mdi-account-box', menu: 'Profile' },
-        { title: 'Role', icon: 'mdi-gavel', menu: 'Role' },
+        { title: 'Role', icon: 'mdi-briefcase', menu: 'Role' },
         { title: 'User', icon: 'mdi-account-box-multiple', menu: 'User' },
+        { title: 'Otorisasi', icon: 'mdi-gavel', menu: 'Otorisasi' },
+      ],
+      childPTPP: [
+        { title: 'Input PTPP', menu: 'Input PTPP' },
+        { title: 'Status PTPP', menu: 'Status PTPP' },
       ],
     };
   },
@@ -56,7 +77,18 @@ export default {
     },
     pindah(val) {
       Router.redirectParam(val.menu);
+      // if (val.menu != 'PTPP') {
+      //   Functions.HideElement('.v-expansion-panel-content');
+      //   Router.redirectParam(val.menu);
+      // } else {
+      //   this.disablePtpp = false;
+      // }
     },
   },
 };
 </script>
+<style>
+.v-expansion-panel-content__wrap {
+  padding: 0;
+}
+</style>

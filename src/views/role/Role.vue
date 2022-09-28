@@ -146,7 +146,7 @@ export default {
           id: 2,
           roleCode: 'auditor',
           roleName: 'Auditor',
-          description: 'Akses Untuk Otorisasi',
+          description: 'Akses Pemohon / Auditor',
           menus: [
             {
               id: 1,
@@ -166,12 +166,12 @@ export default {
             {
               id: 4,
               menu: 'PTPP',
-              access: false,
+              access: true,
             },
             {
               id: 5,
               menu: 'Otor',
-              access: true,
+              access: false,
             },
           ],
           edit: true,
@@ -179,9 +179,9 @@ export default {
         },
         {
           id: 3,
-          roleCode: 'admin',
-          roleName: 'Admin',
-          description: 'Akses Untuk Input Data',
+          roleCode: 'penerimaPTPP',
+          roleName: 'Penerima PTPP',
+          description: 'Akses Penerima PTPP',
           menus: [
             {
               id: 1,
@@ -207,6 +207,41 @@ export default {
               id: 5,
               menu: 'Otor',
               access: false,
+            },
+          ],
+          edit: true,
+          delete: true,
+        },
+        {
+          id: 3,
+          roleCode: 'fuelTerminalManager',
+          roleName: 'Fuel Terminal Manager',
+          description: 'Akses Fuel Terminal Manager',
+          menus: [
+            {
+              id: 1,
+              menu: 'Profile',
+              access: true,
+            },
+            {
+              id: 2,
+              menu: 'User',
+              access: false,
+            },
+            {
+              id: 3,
+              menu: 'Role',
+              access: false,
+            },
+            {
+              id: 4,
+              menu: 'PTPP',
+              access: false,
+            },
+            {
+              id: 5,
+              menu: 'Otor',
+              access: true,
             },
           ],
           edit: true,

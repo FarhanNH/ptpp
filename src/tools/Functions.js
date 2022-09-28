@@ -1,4 +1,5 @@
 import moment from 'moment';
+import $ from 'jquery';
 
 export default {
   SaveSessionCustom(key, value) {
@@ -41,5 +42,11 @@ export default {
   },
   GetCurrentYear() {
     return moment().locale('id').startOf('year').format('YYYY');
+  },
+  ShowElement(val) {
+    $(val).css('display', 'block');
+  },
+  HideElement(val) {
+    $(val).css('display', 'none');
   },
 };

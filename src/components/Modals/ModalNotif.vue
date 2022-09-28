@@ -2,20 +2,14 @@
   <v-dialog v-model="show" persistent max-width="500px">
     <v-card>
       <v-card-title class="text-h5 justify-center">
-        <v-icon large color="green darken-2">
-          mdi-checkbox-marked-circle-outline
-        </v-icon>
+        <v-icon large color="green darken-2"> mdi-checkbox-marked-circle-outline </v-icon>
       </v-card-title>
       <v-form ref="form" @submit.prevent="submit">
         <v-card-title class="text-h5">
           <v-layout row>
             <v-col>
               <div>
-                <p class="text-center my-0">
-                  {{ decision }} berhasil
-                  <br />
-                  dan menunggu otorisasi
-                </p>
+                <p class="text-center my-0">{{ decision }} berhasil</p>
               </div>
             </v-col>
           </v-layout>
@@ -29,7 +23,7 @@
   </v-dialog>
 </template>
 <script>
-import Router from "@/tools/Router";
+import Router from '@/tools/Router';
 export default {
   props: {
     modalOn: Boolean,
@@ -43,7 +37,7 @@ export default {
       },
       set(val) {
         if (!val) {
-          this.$emit("close");
+          this.$emit('close');
         }
       },
     },
@@ -54,7 +48,7 @@ export default {
       if (this.urlback != undefined) {
         Router.redirect(this.urlback);
       } else {
-        this.$emit("close");
+        this.$emit('close');
       }
     },
   },

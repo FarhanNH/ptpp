@@ -5,6 +5,7 @@ import ptpp from './ptpp';
 import profile from './profile';
 import role from './role';
 import user from './user';
+import otorisasi from './otorisasi';
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,7 @@ const routes = [
       ...profile,
       ...role,
       ...user,
+      ...otorisasi,
     ],
   },
   {

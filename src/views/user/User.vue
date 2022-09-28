@@ -26,13 +26,7 @@
       </v-row> -->
       <v-row class="pb-4">
         <v-col cols="11">
-          <v-data-table
-            hide-default-header
-            hide-default-footer
-            :headers="headers"
-            :items="dataTable"
-            :search="searchData"
-          >
+          <v-data-table hide-default-header hide-default-footer :headers="headers" :items="dataTable" :search="searchData">
             <!-- <template v-slot:top>
               <v-toolbar flat>
                 <v-toolbar-title
@@ -86,12 +80,7 @@
             <template #header="{ props: { headers } }">
               <thead class="v-data-table-header">
                 <tr>
-                  <th
-                    v-for="header in headers"
-                    :key="header.value"
-                    :width="header.width"
-                    class="light-blue--text text--darken-3"
-                  >
+                  <th v-for="header in headers" :key="header.value" :width="header.width" class="light-blue--text text--darken-3">
                     {{ header.text }}
                   </th>
                 </tr>
@@ -104,25 +93,17 @@
               <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
             </template>
           </v-data-table>
-          <ModalConfirm
-            :modalOn="dialogDelete"
-            @closeDelete="closeDelete"
-            @deleteItemConfirm="deleteItemConfirm"
-          ></ModalConfirm>
-          <ModalNotif
-            :modalOn="modals.success"
-            :decision="modals.decision"
-            @close="modals.success = false"
-          ></ModalNotif>
+          <ModalConfirm :modalOn="dialogDelete" @closeDelete="closeDelete" @deleteItemConfirm="deleteItemConfirm"></ModalConfirm>
+          <ModalNotif :modalOn="modals.success" :decision="modals.decision" @close="modals.success = false"></ModalNotif>
         </v-col>
       </v-row>
     </v-card>
   </v-container>
 </template>
 <script>
-import ModalNotif from "@/components/Modals/ModalNotif.vue";
-import ModalConfirm from "@/components/Modals/ModalConfirm.vue";
-import Router from "@/tools/Router";
+import ModalNotif from '@/components/Modals/ModalNotif.vue';
+import ModalConfirm from '@/components/Modals/ModalConfirm.vue';
+import Router from '@/tools/Router';
 export default {
   components: {
     ModalNotif,
@@ -130,36 +111,36 @@ export default {
   },
   data() {
     return {
-      title: "User",
+      title: 'User',
       modals: {
         success: false,
-        decision: "",
+        decision: '',
       },
       dialogDelete: false,
       dialogAdd: false,
-      searchKey: "",
-      searchData: "",
+      searchKey: '',
+      searchData: '',
       dataTable: [],
       headers: [
         {
-          text: "User",
-          value: "username",
-          width: "10%",
+          text: 'User',
+          value: 'username',
+          width: '10%',
         },
         {
-          text: "Role",
-          value: "role",
-          width: "20%",
+          text: 'Role',
+          value: 'role',
+          width: '20%',
         },
         {
-          text: "Edit",
-          value: "edit",
-          width: "1%",
+          text: 'Edit',
+          value: 'edit',
+          width: '1%',
         },
         {
-          text: "Hapus",
-          value: "delete",
-          width: "1%",
+          text: 'Hapus',
+          value: 'delete',
+          width: '1%',
         },
       ],
     };
@@ -174,13 +155,13 @@ export default {
         isAddItem: true,
       };
       let strVal = JSON.stringify(val);
-      Router.redirectParam("Edit User", strVal);
+      Router.redirectParam('Edit User', strVal);
     },
     editItem(val) {
       console.log(val);
       val.urlBack = this.$route.path;
       let strVal = JSON.stringify(val);
-      Router.redirectParam("Edit User", strVal);
+      Router.redirectParam('Edit User', strVal);
     },
     deleteItem(val) {
       console.log(val);
@@ -192,41 +173,41 @@ export default {
     deleteItemConfirm() {
       this.dialogDelete = false;
       this.modals.success = true;
-      this.modals.decision = "Hapus User";
+      this.modals.decision = 'Hapus User';
     },
     dummy() {
       this.dataTable.push(
         {
           id: 1,
-          username: "USERNAME",
-          name: "USER NAME",
-          email: "superemail@email.com",
-          roleCode: "superuser",
-          role: "SUPER USER",
+          username: 'USERNAME',
+          name: 'USER NAME',
+          email: 'superemail@email.com',
+          roleCode: 'superuser',
+          role: 'SUPER USER',
           menus: [
             {
               id: 1,
-              menu: "Profile",
+              menu: 'Profile',
               access: true,
             },
             {
               id: 2,
-              menu: "User",
+              menu: 'User',
               access: true,
             },
             {
               id: 3,
-              menu: "Role",
+              menu: 'Role',
               access: true,
             },
             {
               id: 4,
-              menu: "PTPP",
+              menu: 'PTPP',
               access: true,
             },
             {
               id: 5,
-              menu: "Otor",
+              menu: 'Otor',
               access: true,
             },
           ],
@@ -235,35 +216,35 @@ export default {
         },
         {
           id: 2,
-          username: "AUDITOR",
-          name: "AUDITOR",
-          email: "auditemail@email.com",
-          roleCode: "auditor",
-          role: "Auditor",
+          username: 'AUDITOR',
+          name: 'AUDITOR',
+          email: 'auditemail@email.com',
+          roleCode: 'auditor',
+          role: 'Auditor',
           menus: [
             {
               id: 1,
-              menu: "Profile",
+              menu: 'Profile',
               access: true,
             },
             {
               id: 2,
-              menu: "User",
+              menu: 'User',
               access: false,
             },
             {
               id: 3,
-              menu: "Role",
+              menu: 'Role',
               access: false,
             },
             {
               id: 4,
-              menu: "PTPP",
+              menu: 'PTPP',
               access: false,
             },
             {
               id: 5,
-              menu: "Otor",
+              menu: 'Otor',
               access: true,
             },
           ],
@@ -272,35 +253,35 @@ export default {
         },
         {
           id: 3,
-          username: "ADMIN",
-          name: "ADMIN",
-          email: "adminemail@email.com",
-          roleCode: "admin",
-          role: "Admin",
+          username: 'ADMIN',
+          name: 'ADMIN',
+          email: 'adminemail@email.com',
+          roleCode: 'penerimaPTPP',
+          role: 'Penerima PTPP',
           menus: [
             {
               id: 1,
-              menu: "Profile",
+              menu: 'Profile',
               access: true,
             },
             {
               id: 2,
-              menu: "User",
+              menu: 'User',
               access: false,
             },
             {
               id: 3,
-              menu: "Role",
+              menu: 'Role',
               access: false,
             },
             {
               id: 4,
-              menu: "PTPP",
+              menu: 'PTPP',
               access: true,
             },
             {
               id: 5,
-              menu: "Otor",
+              menu: 'Otor',
               access: false,
             },
           ],
